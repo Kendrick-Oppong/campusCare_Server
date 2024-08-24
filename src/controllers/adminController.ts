@@ -93,7 +93,6 @@ export async function adminLogin(req: Request, res: Response) {
     // Return a success response if all credentials match
     return res.status(200).json({
       message: "Login successful",
-      isAuthenticated: true,
     });
   } catch (error) {
     const validationError = fromError(error);

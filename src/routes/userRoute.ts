@@ -5,6 +5,3 @@ export const router: Router = express.Router();
 
 router.get("/user/report", getUserReport);
 router.post("/user/report", userReport);
-
-
-

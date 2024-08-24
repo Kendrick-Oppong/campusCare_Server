@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { prisma } from "../config/prisma";
-import { UserReportSchema } from "../validators/schema";
+import { userReportSchema } from "../validators/schema";
 import { z } from "zod";
 import { fromError } from "zod-validation-error";
 
@@ -8,7 +8,7 @@ export async function userReport(req: Request, res: Response) {
   try {
     // Parse and validate the request body using the UserReportSchema
     const { course, fullName, level, message, facility } =
-      UserReportSchema.parse(req.body);
+      userReportSchema.parse(req.body);
     // Create a new report record in the database
     await prisma.user.create({
       data: { course, fullName, level, facility, message },

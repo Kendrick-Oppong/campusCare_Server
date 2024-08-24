@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import "dotenv/config";
 import { router as userReport } from "./routes/userRoute";
+import { router as admin } from "./routes/adminRoute";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.use("/api", userReport);
+app.use("/api", admin);
 
 // Start the server and listen on the specified port
 app.listen(port, () => {

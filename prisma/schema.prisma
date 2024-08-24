@@ -22,3 +22,10 @@ model User {
   facility String
   message  String
 }
+
+model Admin {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  password String
+}

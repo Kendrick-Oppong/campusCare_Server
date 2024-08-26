@@ -19,8 +19,13 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const body_parser_1 = __importDefault(require("body-parser"));
 require("dotenv/config");
 const userRoute_1 = require("./routes/userRoute");
+const adminRoute_1 = require("./routes/adminRoute");
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: [process.env.CLIENT_URL, "http://localhost:5173"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+}));
 app.use((0, helmet_1.default)());
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json());
@@ -31,6 +36,7 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send("ok");
 }));
 app.use("/api", userRoute_1.router);
+app.use("/api", adminRoute_1.router);
 // Start the server and listen on the specified port
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

@@ -19,7 +19,7 @@ function userReport(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             // Parse and validate the request body using the UserReportSchema
-            const { course, fullName, level, message, facility } = schema_1.UserReportSchema.parse(req.body);
+            const { course, fullName, level, message, facility } = schema_1.userReportSchema.parse(req.body);
             // Create a new report record in the database
             yield prisma_1.prisma.user.create({
                 data: { course, fullName, level, facility, message },
